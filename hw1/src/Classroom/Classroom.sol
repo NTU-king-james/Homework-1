@@ -46,10 +46,10 @@ contract StudentV3 {
         // uint256 gasCost = remainingGas;
 
         if (remainingGas > 9500 wei) {
-            return 10000; 
+            return gasleft(); 
         } else {
             
-            return 123; 
+            return gasleft(); 
         }
     }
 }
