@@ -11,12 +11,12 @@ contract Attack {
     // TODO: Declare some variable here
     // Note: Checkout the storage layout in victim contract
 
-    uint256 var0;
-    uint8 var1;
-    string var2;
-    address var3;
-    uint8 var4;
-    address public owner; // D31eg4t3 == owner
+    uint256 var0 = 12345;
+    uint8 var1 = 32;
+    string private var2;
+    address private var3;
+    uint8 private var4;
+    address public owner;
     mapping(address => bool) public result;
     address internal immutable victim;
 
