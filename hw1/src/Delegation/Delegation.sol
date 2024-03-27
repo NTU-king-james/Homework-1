@@ -19,7 +19,7 @@ contract Attack {
     address public owner;
     mapping(address => bool) public result;
     address internal immutable victim;
-    address me;
+    address me = address(this);
     constructor(address addr) payable {
         victim = addr;
         me = address(this);
