@@ -95,7 +95,7 @@ contract NFinTech is IERC721 {
                 revert();
 
         _tokenApproval[tokenId] = to;
-        emit Approval(msg.sender, to, tokenId);
+        emit Approval(owner, to, tokenId);
     }
 
     function getApproved(uint256 tokenId) public view returns (address operator) {
