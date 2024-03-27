@@ -88,7 +88,12 @@ contract NFinTech is IERC721 {
 
     function approve(address to, uint256 tokenId) external {
         // TODO: please add your implementaiton here
-        if (msg.sender != _owner[tokenId]) revert();
+      
+        address owner = _owner[tokenId];
+        if (msg.sender != owner)
+            if( !_operatorApproval[owner][msg.sender])
+                revert();
+
         _tokenApproval[tokenId] = to;
         emit Approval(msg.sender, to, tokenId);
     }
