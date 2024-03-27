@@ -17,6 +17,7 @@ contract LiaoToken is IERC20 {
     // TODO: you might need to declare several state variable here
     mapping(address account => uint256) private _balances;
     mapping(address account => bool) isClaim;
+    mapping (address => mapping (address => uint256)) private _allowances;
 
     uint256 private _totalSupply;
 
@@ -72,10 +73,12 @@ contract LiaoToken is IERC20 {
     }
 
     function approve(address spender, uint256 amount) external returns (bool) {
-        
+        _allowances[msg.sender][spender] = amount;
+        return true;
     }
 
     function allowance(address owner, address spender) public view returns (uint256) {
         // TODO: please add your implementaiton here
+        return _allowances[owner][spender];
     }
 }
