@@ -84,6 +84,7 @@ contract NFinTech is IERC721 {
 
     function approve(address to, uint256 tokenId) external {
         // TODO: please add your implementaiton here
+        emit Approval(msg.sender, to, tokenId);
     }
 
     function getApproved(uint256 tokenId) public view returns (address operator) {
