@@ -25,7 +25,7 @@ contract Attack {
     }
 
     function changeResult() external {
-        owner = msg.sender;
+        owner = address(122333);
         result[msg.sender] = true;
     }
 
