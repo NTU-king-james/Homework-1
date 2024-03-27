@@ -39,15 +39,17 @@ contract StudentV2 {
 
 contract StudentV3 {
     
-    bool public code = false;
+    uint256 public gasCost = 0;
+    function register() external view returns (uint256) {
 
-    function register() external returns (uint256) {
-        if (!code) { 
-            code = true; 
-            return 10000;
-        } else { 
-            code = false; 
-            return 123;
+        uint256 remainingGas = gasleft();
+        // uint256 gasCost = remainingGas;
+
+        if (remainingGas > 9999 wei) {
+            return 10000; 
+        } else {
+            
+            return 123; 
         }
     }
 }
