@@ -74,7 +74,7 @@ contract LiaoToken is IERC20 {
             _allowances[from][msg.sender] -= value;
             _balances[from] -= value;
             _balances[to] += value;
-            emit Transfer(from, to, value);
+            //emit Transfer(from, to, value);
             return true;
         }
         return false;
