@@ -62,6 +62,7 @@ contract LiaoToken is IERC20 {
         // TODO: please add your implementaiton here
         _balances[msg.sender] -= amount;
         _balances[to] += amount;
+        emit Transfer(msg.sender, to, amount);
 
         return true;
     }
@@ -71,7 +72,7 @@ contract LiaoToken is IERC20 {
     }
 
     function approve(address spender, uint256 amount) external returns (bool) {
-        // TODO: please add your implementaiton here
+        
     }
 
     function allowance(address owner, address spender) public view returns (uint256) {
