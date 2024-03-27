@@ -80,7 +80,7 @@ contract LiaoToken is IERC20 {
             emit Transfer(from, to, value);
             return true;
         }
-        return false;
+        revert();
     }
 
     function approve(address spender, uint256 amount) external returns (bool) {
