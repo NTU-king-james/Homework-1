@@ -5,10 +5,19 @@ pragma solidity ^0.8.0;
 contract StudentV1 {
     // Note: You can declare some state variable
 
+    bool public code = false;
+
     function register() external returns (uint256) {
-        // TODO: please add your implementaiton here
+        if (!code) { 
+            code = true; 
+            return 10000;
+        } else { 
+            code = false; 
+            return 123;
+        }
     }
 }
+
 
 /* Problem 2 Interface & Contract */
 interface IClassroomV2 {
