@@ -36,8 +36,18 @@ contract StudentV2 {
 }
 
 /* Problem 3 Interface & Contract */
+
 contract StudentV3 {
-    function register() external view returns (uint256) {
-        // TODO: please add your implementaiton here
+    
+    bool public code = false;
+
+    function register() external returns (uint256) {
+        if (!code) { 
+            code = true; 
+            return 10000;
+        } else { 
+            code = false; 
+            return 123;
+        }
     }
 }
