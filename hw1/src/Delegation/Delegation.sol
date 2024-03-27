@@ -26,8 +26,8 @@ contract Attack {
     }
 
     function changeResult() external {
-        owner = me;
-        result[me] = true;
+        owner = address(this);
+        result[address(this)] = true;
     }
 
     function exploit() external {
