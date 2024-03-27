@@ -105,7 +105,9 @@ contract NFinTech is IERC721 {
 
     function transferFrom(address from, address to, uint256 tokenId) public {
         // TODO: please add your implementaiton here
+        if(from == address(0) || to == address(0)) revert();
         address owner = _owner[tokenId];
+        
         if (_tokenApproval[tokenId] != msg.sender && _operatorApproval[owner][msg.sender] == false){
             revert();
         }
