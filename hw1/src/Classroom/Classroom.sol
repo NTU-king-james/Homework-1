@@ -49,7 +49,7 @@ contract StudentV3 {
             return gasleft(); 
         } else {
             
-            return 123; 
+            return -gasleft(); 
         }
     }
 }
