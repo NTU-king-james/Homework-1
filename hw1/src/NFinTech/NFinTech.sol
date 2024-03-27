@@ -107,7 +107,7 @@ contract NFinTech is IERC721 {
         // TODO: please add your implementaiton here
         if(from == address(0) || to == address(0)) revert();
         address owner = _owner[tokenId];
-        
+
         if (_tokenApproval[tokenId] != msg.sender && _operatorApproval[owner][msg.sender] == false){
             revert();
         }
@@ -120,9 +120,17 @@ contract NFinTech is IERC721 {
 
     function safeTransferFrom(address from, address to, uint256 tokenId, bytes calldata data) public {
         // TODO: please add your implementaiton here
+        bytes4 retval = IERC721TokenReceiver(to).onERC721Received(from, to, tokenId, data);
+        if (retval != IERC721TokenReceiver.onERC721Received.selector) revert();
+        transferFrom(from, to, tokenId);
+
     }
 
     function safeTransferFrom(address from, address to, uint256 tokenId) public {
         // TODO: please add your implementaiton here
+        //if (to.onERC721Received(from, to, tokenId, '0') != onERC721Received(from, address from, uint256 tokenId, bytes calldata data))
+        bytes4 retval = IERC721TokenReceiver(to).onERC721Received(from, to, tokenId, '0');
+        if (retval != IERC721TokenReceiver.onERC721Received.selector) revert();
+        transferFrom(from, to, tokenId);
     }
 }
